@@ -1,73 +1,61 @@
-def sort_array_asc(integer_array)
-  integer_array.sort do |a, b|
-    if a == b
-      0
-    elsif a < b
-      -1
-    elsif a > b
-      1
-    end
-  end
+def sort_array_asc(array)
+  new_array = []
+  new_array = array.sort()
+  new_array
 end
 
-def sort_array_desc(integer_array)
-  integer_array.sort do |a, b|
-    if a == b
-      0
-    elsif a < b
-      1
-    elsif a > b
-      -1
-    end
-  end
+def sort_array_desc(array)
+  new_array = []
+  new_array = array.sort.reverse()
+  new_array
 end
 
 def sort_array_char_count(array)
-   array.sort {|a, b| a.length <=> b.length} #for my ref, http://ruby-doc.org/core-1.9.3/Array.html#method-i-sort
+  new_array = array.sort do |a, b|
+     a.length <=> b.length
+   end
+  new_array
 end
 
 def swap_elements(array)
-  array[1], array[2] = array[2], array[1] 
-  array
-end
-
-def swap_elements_from_to(array, index, destination_index)
-  array[index], array[destination_index = array[destination_index], array[index]
-  return array
+   new_array = array[0], array[2], array[1]
+   new_array
 end
 
 def reverse_array(array)
-  array.reverse
+  new_array = array.reverse
+  new_array
 end
 
 def kesha_maker(array)
-  return_array = []
-  array.each do |string|
-    string[2] = "$"
-    return_array << string
+  new_array = array.map do |str|
+    prefix = str[0, 2]
+    suffix = str[3, str.length]
+    "#{prefix}$#{suffix}"
   end
-  return_array
+  new_array
 end
 
 def find_a(array)
-  array.select { |word| word.start_with?("a") }
+  new_array = array.select do |element|
+    element.start_with?("a")
+  end
+    new_array
 end
 
 def sum_array(array)
-  # alternative? (array).inject {|sum, i| sum + i }
-  array.inject do |sum, number| 
-    sum + number
+  array.inject(0) do |sum, item|
+   sum + item
   end
 end
 
 def add_s(array)
-  return_array = []
-    array.each_with_index do |word,index|
-      if index != 1 
-        word = word + "s"
-      end
-      return_array << word 
+  new_arr = array.map.with_index do |item, index|
+    if index == 1
+      item
+    else
+      item + "s"
+    end
   end
-  
-  return_array   
+  new_arr
 end
