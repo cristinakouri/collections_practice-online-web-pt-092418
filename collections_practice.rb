@@ -1,19 +1,29 @@
-def sort_array_asc(array)
-  array.sort do |a, b|
-    a <=> b
+def sort_array_asc(integer_array)
+  integer_array.sort do |a, b|
+    if a == b
+      0
+    elsif a < b
+      -1
+    elsif a > b
+      1
+    end
   end
 end
 
-def sort_array_desc(array)
-  array.sort do |a, b|
-    b <=> a 
+def sort_array_desc(integer_array)
+  integer_array.sort do |a, b|
+    if a == b
+      0
+    elsif a < b
+      1
+    elsif a > b
+      -1
+    end
   end
 end
 
 def sort_array_char_count(array)
-  array.sort do |a, b|
-    a.length <=> b.length 
-  end
+   array.sort {|a, b| a.length <=> b.length} #for my ref, http://ruby-doc.org/core-1.9.3/Array.html#method-i-sort
 end
 
 def swap_elements(array)
@@ -58,5 +68,6 @@ def add_s(array)
       end
       return_array << word 
   end
+  
   return_array   
 end
